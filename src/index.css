@@ -1,0 +1,87 @@
+@import '@fortawesome/fontawesome-free/css/all.min.css';
+
+/* Corrigir ícones do Leaflet */
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+}
+
+.leaflet-control-attribution {
+  font-size: 12px;
+}
+
+/* Fix Leaflet marker icons */
+.leaflet-default-icon-path {
+  background-image: url(https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png);
+}
+
+/* Animações de slide */
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.5s ease-out forwards;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.5s ease-out forwards;
+}
+
+/* Estilização dos botões do carrossel */
+.slick-prev,
+.slick-next {
+  width: 30px !important;
+  height: 30px !important;
+  z-index: 1 !important;
+  background: none !important; /* Remove qualquer fundo */
+  border: none !important; /* Remove qualquer borda */
+}
+
+.slick-prev:before,
+.slick-next:before {
+  font-family: 'Font Awesome 5 Free' !important;
+  font-weight: 900 !important;
+  color: #1f2937 !important; /* text-gray-800 */
+  font-size: 20px !important;
+}
+
+.slick-prev:before {
+  content: '\f053' !important; /* fa-chevron-left */
+}
+
+.slick-next:before {
+  content: '\f054' !important; /* fa-chevron-right */
+}
+
+.slick-prev:hover:before,
+.slick-next:hover:before {
+  color: #374151 !important; /* text-gray-700 */
+}
+
+/* Remove fundo padrão do slick */
+.slick-prev,
+.slick-next,
+.slick-prev:hover,
+.slick-next:hover {
+  background: transparent !important;
+  box-shadow: none !important;
+}
