@@ -7,6 +7,8 @@ import GallerySection from '../../components/GallerySection';
 import MapContactSection from '../../components/MapContactSection';
 import AboutSection from '../../components/AboutSection/AboutSection';
 
+import instrutor from "../../assets/images/instructors/matheusNaresi.jpeg"
+
 interface Event {
   id: number;
   src: string;
@@ -20,7 +22,7 @@ const instructors = [
   {
     id: 2,
     name: 'Contra Mestre Matheus Naresi',
-    photo: 'https://via.placeholder.com/150',
+    photo: instrutor,
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
   },
 ];
@@ -47,10 +49,9 @@ const graduationSystem = [
 ];
 
 const pricing = [
-  { plan: 'Crianças', price: 'R$ 100,00/mês', description: 'Aulas para crianças de 4 a 12 anos, 2x por semana' },
-  { plan: 'Iniciantes', price: 'R$ 120,00/mês', description: 'Aulas para iniciantes, 2x por semana' },
-  { plan: 'Intermediários', price: 'R$ 140,00/mês', description: 'Aulas para alunos intermediários, 3x por semana' },
-  { plan: 'Avançados', price: 'R$ 160,00/mês', description: 'Aulas para alunos avançados, 3x por semana' },
+  { plan: 'Crianças', price: 'R$ 129,90/mês', description: 'Aulas para crianças de 5 a 10 anos' },
+  { plan: 'Adolescentes', price: 'R$ 129,90/mês', description: 'Aulas para adolescentes de 11 a 16 anos' },
+  { plan: 'Adultos', price: 'R$ 129,90/mês', description: 'Aulas para adultos' },
 ];
 
 const Home: React.FC = () => {
@@ -212,7 +213,7 @@ const Home: React.FC = () => {
         {/* Horários de Treinamento */}
         <section id="schedule" className="bg-white py-12 animated-section" ref={scheduleRef}>
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center mb-8">Turmas de Treinamento</h2>
+            <h2 className="text-3xl font-bold text-center mb-8">Horários de Treinamento</h2>
             <div className="overflow-x-auto">
               <table className="min-w-full bg-white border border-gray-300 rounded-lg schedule-table">
                 <thead>
@@ -316,7 +317,7 @@ const Home: React.FC = () => {
               <table className="min-w-full bg-white border border-gray-300 rounded-lg">
                 <thead>
                   <tr className="bg-gray-200">
-                    <th className="py-3 px-4 border-b text-left">Plano</th>
+                    <th className="py-3 px-4 border-b text-left">Turma</th>
                     <th className="py-3 px-4 border-b text-left">Preço</th>
                     <th className="py-3 px-4 border-b text-left">Descrição</th>
                   </tr>
