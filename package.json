@@ -39,6 +39,10 @@
     "typescript-eslint": "^8.30.1",
     "vite": "^6.3.5"
   },
+  "engines": {
+    "node": "18.x",
+    "npm": "9.x"
+  },
   "description": "This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.",
   "main": "src/main.tsx",
   "keywords": [],

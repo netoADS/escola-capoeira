@@ -47,7 +47,7 @@ const AboutSection: React.FC = () => {
   const benefitsRef = useRef<HTMLDivElement>(null);
   const fundamentalsRef = useRef<HTMLDivElement>(null);
   const structureRef = useRef<HTMLDivElement>(null);
-  const commitmentRef = useRef<HTMLDivElement>(null);
+  // const commitmentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -67,19 +67,19 @@ const AboutSection: React.FC = () => {
     if (benefitsRef.current) observer.observe(benefitsRef.current);
     if (fundamentalsRef.current) observer.observe(fundamentalsRef.current);
     if (structureRef.current) observer.observe(structureRef.current);
-    if (commitmentRef.current) observer.observe(commitmentRef.current);
+    // if (commitmentRef.current) observer.observe(commitmentRef.current);
 
     return () => {
       if (originRef.current) observer.unobserve(originRef.current);
       if (benefitsRef.current) observer.unobserve(benefitsRef.current);
       if (fundamentalsRef.current) observer.unobserve(fundamentalsRef.current);
       if (structureRef.current) observer.unobserve(structureRef.current);
-      if (commitmentRef.current) observer.unobserve(commitmentRef.current);
+      // if (commitmentRef.current) observer.unobserve(commitmentRef.current);
     };
   }, []);
 
   return (
-    <section id="about" className="bg-white py-12">
+    <section id="about" className="bg-white py-12 relative z-10">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold text-center pb-9 mb-8">Sobre a Escola de Capoeira Orísun</h2>
 
@@ -97,18 +97,18 @@ const AboutSection: React.FC = () => {
             <img
               src={jogoContinua}
               alt="Origem da Capoeira"
-              className="w-full object-contain rounded-lg"
+              className="w-full h-auto object-contain rounded-lg"
             />
           </div>
         </div>
 
         {/* Benefícios da Capoeira */}
         <div className="flex flex-col md:flex-row gap-8 mb-12 commitment-section" ref={benefitsRef}>
-          <div className="md:w-1/2 origin-image">
+          <div className="md:w-1/2 origin-image relative">
             <Slider {...carouselSettings}>
               {trainingImages.map((image) => (
                 <div key={image.id} className="relative">
-                  <img src={image.src} alt={image.alt} className="w-full carousel-image rounded-lg" />
+                  <img src={image.src} alt={image.alt} className="w-full h-auto carousel-image rounded-lg" />
                   <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent text-white p-4 rounded-b-lg">
                     <p className="text-sm">{image.caption}</p>
                   </div>
@@ -139,11 +139,11 @@ const AboutSection: React.FC = () => {
               Respeito à ancestralidade, compromisso com a educação, expressão cultural, pertencimento comunitário e busca pela excelência com identidade.
             </p>
           </div>
-          <div className="md:w-1/2 origin-image">
+          <div className="md:w-1/2 origin-image relative">
             <Slider {...carouselSettings}>
               {movementImages.map((image) => (
                 <div key={image.id} className="relative">
-                  <img src={image.src} alt={image.alt} className="w-full carousel-image rounded-lg" />
+                  <img src={image.src} alt={image.alt} className="w-full h-auto carousel-image rounded-lg" />
                   <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent text-white p-4 rounded-b-lg">
                     <p className="text-sm">{image.caption}</p>
                   </div>
@@ -155,11 +155,11 @@ const AboutSection: React.FC = () => {
 
         {/* Estrutura */}
         <div className="flex flex-col md:flex-row gap-8 mb-12 commitment-section" ref={structureRef}>
-          <div className="md:w-1/2 origin-image">
+          <div className="md:w-1/2 origin-image relative">
             <Slider {...carouselSettings}>
               {structureImages.map((image) => (
                 <div key={image.id} className="relative">
-                  <img src={image.src} alt={image.alt} className="w-full carousel-image rounded-lg" />
+                  <img src={image.src} alt={image.alt} className="w-full h-auto carousel-image rounded-lg" />
                   <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent text-white p-4 rounded-b-lg">
                     <p className="text-sm">{image.caption}</p>
                   </div>
@@ -176,25 +176,6 @@ const AboutSection: React.FC = () => {
             </p>
           </div>
         </div>
-
-        {/* Compromisso Social */}
-        {/* <div className="flex flex-col md:flex-row gap-8 mb-12 origin-section" ref={commitmentRef}>
-          <div className="md:w-1/2 intro-topic">
-            <h4 className="text-lg font-semibold flex items-center mb-2">
-              <i className="fas fa-hands-helping mr-2 text-gray-800"></i> Compromisso Social
-            </h4>
-            <p className="text-gray-700">
-              Oferecemos aulas gratuitas para crianças de baixa renda, oficinas culturais em comunidades e parcerias com escolas públicas, usando a capoeira como ferramenta de inclusão e transformação.
-            </p>
-          </div>
-          <div className="md:w-1/2 origin-image">
-            <img
-              src="https://via.placeholder.com/400x300"
-              alt="Compromisso Social"
-              className="w-full object-contain rounded-lg"
-            />
-          </div>
-        </div> */}
       </div>
     </section>
   );

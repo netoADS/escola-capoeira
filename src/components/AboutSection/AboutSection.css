@@ -1,6 +1,6 @@
+/* AboutSection.css */
 .slick-dots li button:before {
   color: #000000;
-  /* Cor dos dots */
 }
 
 .slick-dots li.slick-active button:before {
@@ -17,10 +17,9 @@
 /* Animações */
 @keyframes slide-in-left {
   from {
-    transform: translateX(-100%);
+    transform: translateX(-50px);
     opacity: 0;
   }
-
   to {
     transform: translateX(0);
     opacity: 1;
@@ -29,25 +28,12 @@
 
 @keyframes slide-in-right {
   from {
-    transform: translateX(100%);
+    transform: translateX(50px);
     opacity: 0;
   }
-
   to {
     transform: translateX(0);
     opacity: 1;
-  }
-}
-
-@keyframes slide-out-right {
-  from {
-    opacity: 1;
-    transform: translateX(0);
-  }
-
-  to {
-    opacity: 0;
-    transform: translateX(100%);
   }
 }
 
@@ -56,22 +42,9 @@
     opacity: 0;
     transform: translateY(20px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-@keyframes fade-slide-out {
-  from {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  to {
-    opacity: 0;
-    transform: translateY(20px);
   }
 }
 
@@ -83,7 +56,7 @@
   animation: slide-in-right 0.5s ease-out forwards;
 }
 
-/* Estilos para a seção de introdução (usada em Fundamentos) */
+/* Estilos para a seção de introdução */
 .intro-section {
   display: flex;
   flex-direction: column;
@@ -94,7 +67,6 @@
   padding: 1rem;
   border-left: 4px solid #000000;
   background-color: #f9fafb;
-  /* bg-gray-50 */
   border-radius: 0.25rem;
   opacity: 0;
   transform: translateY(20px);
@@ -105,10 +77,11 @@
   animation-delay: var(--delay);
 }
 
-/* Estilos para seções com efeito de Origem (Origem, Fundamentos, Compromisso Social) */
+/* Estilos para seções com efeito de Origem */
 .origin-section {
   display: flex;
   gap: 2rem;
+  overflow: hidden;
 }
 
 .origin-section .intro-topic {
@@ -119,6 +92,8 @@
 .origin-section .origin-image {
   opacity: 0;
   transform: translateX(50px);
+  position: relative;
+  z-index: 1;
 }
 
 .origin-section.visible .intro-topic {
@@ -129,17 +104,17 @@
   animation: slide-in-right 0.6s ease-out forwards;
 }
 
-/* Estilos para seções com efeito de Compromisso Social (Benefícios, Estrutura) */
+/* Estilos para seções com efeito de Compromisso */
 .commitment-section {
   display: flex;
   gap: 2rem;
+  overflow: hidden;
 }
 
 .commitment-section .commitment-content {
   padding: 1rem;
   border-left: 4px solid #000000;
   background-color: #f9fafb;
-  /* bg-gray-50 */
   border-radius: 0.25rem;
   opacity: 0;
   transform: translateX(50px);
@@ -148,6 +123,8 @@
 .commitment-section .commitment-image {
   opacity: 0;
   transform: translateX(-50px);
+  position: relative;
+  z-index: 1;
 }
 
 .commitment-section.visible .commitment-content {
@@ -158,42 +135,41 @@
   animation: slide-in-left 0.6s ease-out forwards;
 }
 
-.commitment-section:not(.visible) .commitment-content {
-  animation: slide-out-right 0.6s ease-out forwards;
-}
-
-.commitment-section:not(.visible) .commitment-image {
-  animation: slide-in-left 0.6s ease-out forwards;
-  /* Mantém a imagem saindo para a esquerda */
-}
-
 /* Dimensionamento para imagens */
 .origin-image,
 .commitment-image {
   width: 500px;
-  height: 300px;
+  height: auto;
   max-width: 100%;
 }
 
 .origin-image img,
 .commitment-image img {
   width: 100%;
-  height: 100%;
+  height: auto;
   object-fit: contain;
   object-position: center;
   border-radius: 0.25rem;
 }
 
-
 /* Ajustes para carrossel */
+.slick-slider {
+  position: relative;
+  z-index: 1;
+}
+
 .slick-slide {
   display: block !important;
   text-align: center;
 }
 
+.carousel-image {
+  max-height: 300px;
+  object-fit: contain;
+}
+
 /* Responsividade */
 @media (max-width: 767px) {
-
   .intro-topic,
   .commitment-content {
     padding: 0.75rem;
@@ -211,14 +187,13 @@
     max-width: 400px;
     height: auto;
     aspect-ratio: 4 / 3;
-    /* Mantém proporção 400x300 */
   }
 
   .origin-image img,
   .commitment-image img,
   .carousel-image {
     width: 100%;
-    height: 100%;
+    height: auto;
     object-fit: contain;
     object-position: center;
   }
