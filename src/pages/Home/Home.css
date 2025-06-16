@@ -61,6 +61,7 @@ table {
 th, td {
   padding: 0.75rem 1rem;
   text-align: left;
+  border: 1px solid #d1d5db; /* border-gray-300 */
 }
 
 thead tr {
@@ -73,6 +74,17 @@ tbody tr {
 
 tbody tr:last-child {
   border-bottom: none;
+}
+
+/* Estilos específicos para tabela de horários */
+.schedule-table td {
+  text-align: center;
+  vertical-align: middle;
+  font-size: 0.9rem;
+}
+
+.schedule-table td:empty {
+  background-color: #F5F5F5; /* bg-gray-50 */
 }
 
 /* Estilo para representação de cordas */

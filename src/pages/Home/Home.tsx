@@ -26,14 +26,10 @@ const instructors = [
 ];
 
 const schedule = [
-  { day: 'Segunda-feira', time: '10:00 - 11:00', description: 'Crianças e Iniciantes' },
-  { day: 'Terça-feira', time: '17:00 - 18:00', description: 'Crianças' },
-  { day: 'Terça-feira', time: '19:00 - 20:00', description: 'Crianças e Iniciantes' },
-  { day: 'Terça-feira', time: '20:00 - 21:30', description: 'Intermediário e Avançado' },
-  { day: 'Quarta-feira', time: '10:00 - 11:00', description: 'Crianças e Iniciantes' },
-  { day: 'Quinta-feira', time: '17:00 - 18:00', description: 'Crianças' },
-  { day: 'Quinta-feira', time: '19:00 - 20:00', description: 'Crianças e Iniciantes' },
-  { day: 'Quinta-feira', time: '20:00 - 21:30', description: 'Intermediário e Avançado' },
+  { time: '10:00 - 11:00', Segunda: 'Adolescentes e Adultos', Terça: '', Quarta: 'Adolescentes e Adultos', Quinta: '', Sexta: '' },
+  { time: '17:00 - 18:00', Segunda: '', Terça: 'Crianças (5-10 anos)', Quarta: '', Quinta: 'Crianças (5-10 anos)', Sexta: '' },
+  { time: '19:00 - 20:00', Segunda: '', Terça: 'Adolescentes (11-16 anos)', Quarta: '', Quinta: 'Adolescentes (11-16 anos)', Sexta: '' },
+  { time: '20:00 - 21:30', Segunda: '', Terça: 'Adultos', Quarta: '', Quinta: 'Adultos', Sexta: '' },
 ];
 
 const graduationSystem = [
@@ -63,7 +59,7 @@ const Home: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const scheduleRef = useRef<HTMLElement>(null);
   const graduationRef = useRef<HTMLElement>(null);
-  const instructorsRef = useRef<HTMLDivElement>(null); // Alterado para div
+  const instructorsRef = useRef<HTMLDivElement>(null);
   const pricingRef = useRef<HTMLElement>(null);
 
   const handleEventClick = (event: Event) => {
@@ -216,22 +212,44 @@ const Home: React.FC = () => {
         {/* Horários de Treinamento */}
         <section id="schedule" className="bg-white py-12 animated-section" ref={scheduleRef}>
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center mb-8">Horários de Treinamento</h2>
+            <h2 className="text-3xl font-bold text-center mb-8">Turmas de Treinamento</h2>
             <div className="overflow-x-auto">
-              <table className="min-w-full bg-white border border-gray-300 rounded-lg">
+              <table className="min-w-full bg-white border border-gray-300 rounded-lg schedule-table">
                 <thead>
                   <tr className="bg-gray-200">
-                    <th className="py-3 px-4 border-b text-left">Dia</th>
                     <th className="py-3 px-4 border-b text-left">Horário</th>
-                    <th className="py-3 px-4 border-b text-left">Descrição</th>
+                    <th className="py-3 px-4 border-b text-left">Segunda</th>
+                    <th className="py-3 px-4 border-b text-left">Terça</th>
+                    <th className="py-3 px-4 border-b text-left">Quarta</th>
+                    <th className="py-3 px-4 border-b text-left">Quinta</th>
+                    <th className="py-3 px-4 border-b text-left">Sexta</th>
                   </tr>
                 </thead>
                 <tbody>
                   {schedule.map((item, index) => (
                     <tr key={index}>
-                      <td className="py-3 px-4 border-b">{item.day}</td>
                       <td className="py-3 px-4 border-b">{item.time}</td>
-                      <td className="py-3 px-4 border-b">{item.description}</td>
+                      <td className="py-3 px-4 border-b" style={{ backgroundColor: item.Segunda === 'Adolescentes e Adultos' ? '#A5D6A7' : '' }}>
+                        {item.Segunda}
+                      </td>
+                      <td className="py-3 px-4 border-b" style={{
+                        backgroundColor: item.Terça === 'Crianças (5-10 anos)' ? '#FFECB3' :
+                          item.Terça === 'Adolescentes (11-16 anos)' ? '#BBDEFB' :
+                          item.Terça === 'Adultos' ? '#CFD8DC' : ''
+                      }}>
+                        {item.Terça}
+                      </td>
+                      <td className="py-3 px-4 border-b" style={{ backgroundColor: item.Quarta === 'Adolescentes e Adultos' ? '#A5D6A7' : '' }}>
+                        {item.Quarta}
+                      </td>
+                      <td className="py-3 px-4 border-b" style={{
+                        backgroundColor: item.Quinta === 'Crianças (5-10 anos)' ? '#FFECB3' :
+                          item.Quinta === 'Adolescentes (11-16 anos)' ? '#BBDEFB' :
+                          item.Quinta === 'Adultos' ? '#CFD8DC' : ''
+                      }}>
+                        {item.Quinta}
+                      </td>
+                      <td className="py-3 px-4 border-b">{item.Sexta}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -272,7 +290,7 @@ const Home: React.FC = () => {
         <section id="instructors" className="bg-white py-12 instructors-section">
           <div className="container mx-auto px-4 instructors-container">
             <h2 className="text-3xl font-bold text-center mb-8">Nossos Instrutores</h2>
-            <div className="instructors-grid max-w-4xl mx-auto" ref={instructorsRef}>{/* grid grid-cols-1 md:grid-cols-3 gap-8 */}
+            <div className="instructors-grid max-w-4xl mx-auto" ref={instructorsRef}>
               {instructors.map((instructor) => (
                 <div
                   key={instructor.id}
@@ -284,7 +302,6 @@ const Home: React.FC = () => {
                     className="w-32 h-32 rounded-full mx-auto mb-4 object-cover"
                   />
                   <h3 className="text-xl font-semibold text-center mb-2">{instructor.name}</h3>
-                  {/* <p className="text-gray-700 text-center">{instructor.description}</p> */}
                 </div>
               ))}
             </div>
